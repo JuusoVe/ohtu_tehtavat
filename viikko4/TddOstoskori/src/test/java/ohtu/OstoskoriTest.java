@@ -51,11 +51,12 @@ public class OstoskoriTest {
         assertEquals(8, kori.hinta());
     }
 
-        @Test
-    public void kahdenSamanTuotteenLisaamisenJalkeenOnKaksiTuotettaKorissa() { 
+    @Test
+    public void kahdenSamanTuotteenLisaamisenJalkeenOnKaksiTuotettaKorissaJaHinta2x() { 
         kori.lisaaTuote(maito);
         kori.lisaaTuote(maito);
         assertEquals(2, kori.tavaroitaKorissa());
+        assertEquals(6, kori.hinta());
     }
 
 }
