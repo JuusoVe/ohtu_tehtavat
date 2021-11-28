@@ -7,8 +7,7 @@ public class Main {
         Tuote maito = new Tuote("maito", 3);
         Tuote leipä = new Tuote("leipä", 5);
         kori.lisaaTuote(maito);
-        kori.lisaaTuote(maito);
-        kori.tavaroitaKorissa();
+        kori.poista(maito);
 
     }
 }

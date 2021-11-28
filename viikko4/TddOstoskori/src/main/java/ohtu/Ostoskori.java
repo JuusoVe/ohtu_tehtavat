@@ -17,8 +17,8 @@ public class Ostoskori {
             return 0;
         }
         int tavaroita = 0;
-        for (int i = 0; i < ostokset.size() ; i++) {
-            tavaroita = tavaroita + ostokset.get(i).lukumaara();
+        for (Ostos ostos : ostokset) {
+            tavaroita = tavaroita + ostos.lukumaara();
         }
         return tavaroita;
     }
@@ -28,19 +28,14 @@ public class Ostoskori {
             return 0;
         }
         int hinta = 0;
-        for (int i = 0; i < ostokset.size() ; i++) {
-            hinta += ostokset.get(i).hinta();
+        for (Ostos ostos : ostokset) {
+            hinta += ostos.hinta();
         }
         return hinta;
     }
  
     public void lisaaTuote(Tuote lisattava) {
-        if ((ostokset.size() < 1)) {
-            ostokset.add(new Ostos(lisattava));
-            return;
-        }
-        for (int i = 0; i < ostokset.size() ; i++) {
-            Ostos ostos = ostokset.get(i);
+        for (Ostos ostos : ostokset) {
             if (ostos.tuotteenNimi().equals(lisattava.getNimi())) {
                 ostos.muutaLukumaaraa(1);
                 return;
@@ -50,7 +45,15 @@ public class Ostoskori {
     }
  
     public void poista(Tuote poistettava) {
-        // poistaa tuotteen
+        for (Ostos ostos : ostokset) {
+            if (ostos.tuotteenNimi().equals(poistettava.getNimi())) {
+                ostos.muutaLukumaaraa(-1);
+                if (ostos.lukumaara() <= 0) {
+                    ostokset.remove(ostos);
+                }
+                return;
+            }
+        }
     }
  
     public List<Ostos> ostokset() {
@@ -58,6 +61,6 @@ public class Ostoskori {
     }
  
     public void tyhjenna() {
-        // tyhjentää korin
+        this.ostokset = new ArrayList<Ostos>();
     }
 }
