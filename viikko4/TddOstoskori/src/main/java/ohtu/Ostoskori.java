@@ -1,6 +1,7 @@
 package ohtu;
 
 import java.util.List;
+
 import java.util.ArrayList;
 
 public class Ostoskori {
@@ -17,7 +18,7 @@ public class Ostoskori {
         }
         int tavaroita = 0;
         for (int i = 0; i < ostokset.size() ; i++) {
-            tavaroita += ostokset.get(i).lukumaara();
+            tavaroita = tavaroita + ostokset.get(i).lukumaara();
         }
         return tavaroita;
     }
@@ -34,6 +35,17 @@ public class Ostoskori {
     }
  
     public void lisaaTuote(Tuote lisattava) {
+        if ((ostokset.size() < 1)) {
+            ostokset.add(new Ostos(lisattava));
+            return;
+        }
+        for (int i = 0; i < ostokset.size() ; i++) {
+            Ostos ostos = ostokset.get(i);
+            if (ostos.tuotteenNimi().equals(lisattava.getNimi())) {
+                ostos.muutaLukumaaraa(1);
+                return;
+            }
+        }
         ostokset.add(new Ostos(lisattava));
     }
  
