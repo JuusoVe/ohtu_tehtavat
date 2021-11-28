@@ -59,12 +59,19 @@ public class OstoskoriTest {
         assertEquals(6, kori.hinta());
     }
 
-        @Test
+    @Test
     public void yhdenTuotteenLisaamisenJalkeenKorissaYksiOstosOlio() {
         kori.lisaaTuote(maito);
         List<Ostos> ostokset = kori.ostokset();
- 
-        // testaa että metodin palauttamin listan pituus 1
+        assertEquals(1, ostokset.size());
     }
+
+    @Test
+    public void yhdenTuotteenLisaamisenKorissaYksiOstosOlioJollaOikeaTuotteenNimiJaMaara() {
+        kori.lisaaTuote(maito);
+        Ostos ostos = kori.ostokset().get(0);
+        assertEquals(ostos.tuotteenNimi(), "maito");
+        assertEquals(1, ostos.lukumaara());
+    } 
 
 }
