@@ -139,6 +139,7 @@ public class IntJoukko {
         }
         return erotus;
     }
+    
 
     @Override
     public String toString() {
