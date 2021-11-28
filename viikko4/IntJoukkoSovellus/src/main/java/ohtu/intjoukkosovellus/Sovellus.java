@@ -18,10 +18,13 @@ public class Sovellus {
         luettu = luku();
         while (true) {
             if (luettu.equals("A") || luettu.equals("a")) {
+                lukija.close();
                 return A;
             } else if (luettu.equals("B") || luettu.equals("b")) {
+                lukija.close();
                 return B;
             } else if (luettu.equals("C") || luettu.equals("c")) {
+                lukija.close();
                 return C;
             } else {
                 System.out.println("Virheellinen joukko! " + luettu);
@@ -41,6 +44,7 @@ public class Sovellus {
         System.out.println("Mikä luku lisätään? ");
         lisLuku = lukija.nextInt();
         joukko.lisaa(lisLuku);
+        lukija.close();
         return;
 
     }
@@ -87,6 +91,7 @@ public class Sovellus {
         System.out.println("Mikä luku poistetaan? ");
         lisLuku = lukija.nextInt();
         joukko.poista(lisLuku);
+        lukija.close();
         return;
     }
 
@@ -104,6 +109,7 @@ public class Sovellus {
         } else {
             System.out.println(kysLuku + " ei kuulu joukkoon ");
         }
+        lukija.close();
         return;
     }
 
