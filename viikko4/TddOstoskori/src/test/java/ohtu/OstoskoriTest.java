@@ -9,11 +9,13 @@ public class OstoskoriTest {
 
     Ostoskori kori;
     Tuote maito;
+    Tuote leipä;
 
     @Before
     public void setUp() {
         kori = new Ostoskori();
         maito = new Tuote("maito", 3);
+        leipä = new Tuote("leipä", 5);
     }
 
     // step 1
@@ -38,8 +40,15 @@ public class OstoskoriTest {
     @Test
     public void kahdenTuotteenLisaamisenJalkeenOnKaksiTuotettaKorissa() { 
         kori.lisaaTuote(maito);
-        kori.lisaaTuote(maito);
+        kori.lisaaTuote(leipä);
         assertEquals(2, kori.tavaroitaKorissa());
+    }
+
+        @Test
+    public void kahdenTuotteenLisaamisenJalkeenHintaOnHintojenSumma() { 
+        kori.lisaaTuote(maito);
+        kori.lisaaTuote(leipä);
+        assertEquals(8, kori.hinta());
     }
 
 }
