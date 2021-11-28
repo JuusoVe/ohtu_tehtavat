@@ -38,7 +38,7 @@ public class OstoskoriTest {
     }
 
     @Test
-    public void kahdenTuotteenLisaamisenJalkeenOnKaksiTuotettaKorissa() { 
+    public void kahdenEriTuotteenLisaamisenJalkeenOnKaksiTuotettaKorissa() { 
         kori.lisaaTuote(maito);
         kori.lisaaTuote(leipä);
         assertEquals(2, kori.tavaroitaKorissa());
