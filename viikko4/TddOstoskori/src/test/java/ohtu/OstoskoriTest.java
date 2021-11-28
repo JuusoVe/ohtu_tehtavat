@@ -91,6 +91,15 @@ public class OstoskoriTest {
         assertEquals(0, kori.tavaroitaKorissa());
         assertEquals(0, kori.hinta());
         assertEquals(0, kori.ostokset().size());
+    }
+        @Test
+    public void tyhjentaminenToimii() {
+        kori.lisaaTuote(maito);
+        kori.poista(leipä);
+        kori.tyhjenna();
+        assertEquals(0, kori.tavaroitaKorissa());
+        assertEquals(0, kori.hinta());
+        assertEquals(0, kori.ostokset().size());
     } 
 
 }
